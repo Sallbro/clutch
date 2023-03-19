@@ -1,49 +1,34 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-import "./styles/Home.css";
+import { useAddress } from "@thirdweb-dev/react";
+import { UserInfo } from "./contexts/userInfo";
+import { UserNfts } from "./contexts/usents";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserContext } from "./components/context/context";
+import Index from "./components/index";
+import axios from "axios";
+import Home from "./components/Home";
+import Navbar from "./components/navbar";
 
-export default function Home() {
+export default function App() {
+  const address = useAddress();
+
+  const [walletAddr, setWalletAddr] = useState(null);
+  const [show, setShow] = useState(false);
+  const [userdata, setuserdata] = useState([]);
+
   return (
-    <div className="container">
-      <main className="main">
-        <h1 className="title">
-          Welcome to <a href="https://thirdweb.com/">thirdweb</a>!
-        </h1>
-
-        <p className="description">
-          Get started by configuring your desired network in{" "}
-          <code className="code">src/index.js</code>, then modify the{" "}
-          <code className="code">src/App.js</code> file!
-        </p>
-
-        <div className="connect">
-          <ConnectWallet />
-        </div>
-
-        <div className="grid">
-          <a href="https://portal.thirdweb.com/" className="card">
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className="card">
-            <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
-          </a>
-
-          <a href="https://portal.thirdweb.com/templates" className="card">
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
-          </a>
-        </div>
-      </main>
-    </div>
+    <UserNfts.Provider value={{ userdata, setuserdata }}>
+      <UserInfo.Provider value={{ setWalletAddr, walletAddr }}>
+        <UserContext.Provider value={{ show, setShow }}>
+          <Navbar />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/home" element={<Home />} />
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </UserInfo.Provider>
+    </UserNfts.Provider>
   );
 }
