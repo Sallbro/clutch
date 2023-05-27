@@ -37,6 +37,7 @@ For any questions, suggestions, join our discord at [https://discord.gg/thirdweb
 
 ## DEVPROFILE!
 
-we got selected for unique idea
+we got selected for unique idea:
 -https://devfolio.co/projects/nft-charity-auction-74b4
+
 -https://err404-5.devfolio.co/projects
