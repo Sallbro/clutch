@@ -34,3 +34,9 @@ You can check out [the thirdweb GitHub organization](https://github.com/thirdweb
 ## Join our Discord!
 
 For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+
+## DEVPROFILE!
+
+we got selected for unique idea
+-https://devfolio.co/projects/nft-charity-auction-74b4
+-https://err404-5.devfolio.co/projects
